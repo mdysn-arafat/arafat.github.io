@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Yasin Arafat — Naval Architect & Marine Engineer</title>
+  <meta name="description" content="Md. Yasin Arafat is a Naval Architect specializing in ship design, FEM analysis, and vessel stability optimization." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F3EF;
+      --ink: #1A1915;
+      --ink-mid: #6B6860;
+      --ink-light: #B8B5AE;
+      --rule: rgba(26,25,21,0.12);
+      --accent: #C8472B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245,243,239,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      padding-top: 56px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0 60px;
+    }
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero-title {
+      font-size: clamp(28px, 4.5vw, 50px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 900px;
+    }
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--rule);
+    }
+    .hero-desc {
+      padding: 32px 32px 32px 0;
+      border-right: 1px solid var(--rule);
+      color: var(--ink-mid);
+      font-size: 17px;
+      max-width: 420px;
+    }
+    .hero-cta {
+      padding: 32px 0 32px 32px;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+    .btn-ghost {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+    /* SECTION SHARED */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .section-index {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* PROJECTS SECTION */
+    .projects-section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* PROJECT GRID */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .project-card {
+      background: var(--bg);
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover { background: rgba(26,25,21,0.03); }
+    .project-card:hover .card-arrow { opacity: 1; transform: translate(0, 0); }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--rule);
+    }
+    .card-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: rgba(26,25,21,0.04);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-thumb-placeholder span {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+      text-transform: uppercase;
+    }
+    .card-body { padding: 20px 24px 24px; }
+    .card-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--ink-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .card-tags {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--ink-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .card-arrow {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-size: 14px;
+      color: var(--accent);
+      opacity: 0;
+      transform: translate(-4px, 4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,25,21,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--bg);
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .modal-close:hover { color: var(--ink); }
+    .modal-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .modal-images img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+    .modal-images img:hover { opacity: 0.85; }
+    .modal-images.single-image { grid-template-columns: 1fr; }
+    .modal-content { padding: 36px 40px 40px; }
+    .modal-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--ink-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .modal-title {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      padding-right: 60px;
+    }
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      border-top: 1px solid var(--rule);
+      padding-top: 28px;
+    }
+    .modal-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 8px;
+    }
+    .modal-text { font-size: 15px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 20px; }
+    .modal-impact { font-size: 15px; color: var(--ink); line-height: 1.7; margin-bottom: 20px; }
+    .modal-tools {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-mid);
+      letter-spacing: 0.08em;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,25,21,0.96);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 90vh; object-fit: contain; }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 32px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .lightbox-close:hover { color: white; }
+
+    /* CAPABILITIES */
+    .capabilities-section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 64px;
+    }
+    .cap-item {
+      padding: 40px 40px 40px 0;
+      border-right: 1px solid var(--rule);
+    }
+    .cap-item:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+    .cap-item:nth-child(2) { padding-left: 40px; }
+    .cap-num { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--ink-light); letter-spacing: 0.1em; margin-bottom: 28px; }
+    .cap-title { font-size: 19px; font-weight: 500; margin-bottom: 12px; }
+    .cap-body { font-size: 16px; color: var(--ink-mid); line-height: 1.7; }
+
+    /* DOWNLOADS */
+    .downloads-section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 48px;
+    }
+    .download-card {
+      background: var(--bg);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      transition: background 0.2s;
+    }
+    .download-card:hover { background: rgba(26,25,21,0.03); }
+    .download-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .download-name { font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .download-filename {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: var(--ink-light);
+      letter-spacing: 0.08em;
+    }
+    .btn-download {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-download:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 100px 0;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 48px;
+    }
+    .contact-left {
+      padding-right: 60px;
+      border-right: 1px solid var(--rule);
+    }
+    .contact-right {
+      padding-left: 60px;
+    }
+    .cta-big { font-size: clamp(36px, 4.5vw, 58px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .cta-body { font-size: 17px; color: var(--ink-mid); margin-bottom: 32px; max-width: 420px; }
+    .contact-details { display: flex; flex-direction: column; gap: 0; }
+    .contact-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .contact-item:first-child { border-top: 1px solid var(--rule); }
+    .contact-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.contact-value:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-text { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-desc { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; }
+      .hero-cta { padding-left: 0; }
+      .project-grid { grid-template-columns: 1fr; }
+      .modal-images { grid-template-columns: 1fr; }
+      .modal-body { grid-template-columns: 1fr; gap: 20px; }
+      .modal-content { padding: 24px 20px 28px; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .cap-item, .cap-item:last-child, .cap-item:nth-child(2) { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 0; }
+      .downloads-grid { grid-template-columns: 1fr; }
+      .download-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-left { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 48px; }
+      .contact-right { padding-left: 0; padding-top: 48px; }
+      .section-header { margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       ADD / EDIT YOUR PROJECTS HERE
+       - images: use [] for none, ["indx/a.png"] for one,
+                 ["indx/a.png","indx/b.png"] for two, etc.
+  ============================================================ -->
+  <script>
+    const PROJECTS = [
+      {
+        title: "Fatigue Analysis of Structural Components",
+        tags: "Python · Power BI · FEA",
+        problem: "Assessed the fatigue life of critical marine structural members under cyclic loading conditions using FEA simulation data.",
+        solution: "Processed raw fatigue datasets in Python, built S-N curve models, and visualized failure trends in Power BI to identify high-risk zones.",
+        impact: "Faster identification of critical failure zones, leading to improved design decisions and reduced risk of structural failure.",
+        images: ["indx/a.png", "indx/b.png"]
+      },
+      {
+        title: "Plate Buckling Data Analysis",
+        tags: "Pandas · ANSYS · Structural",
+        problem: "Investigated buckling behavior of thin-plate structures under compressive loads with variable thickness and boundary conditions.",
+        solution: "Built a structured parametric dataset and applied regression analysis to isolate the factors most influencing buckling stability.",
+        impact: "Highlighted key variables affecting structural integrity, enabling more reliable design under load conditions.",
+        images: ["indx/c.png", "indx/d.png"]
+      },
+      {
+        title: "FEA Stress Visualization Dashboard",
+        tags: "Power BI · Excel · FEM",
+        problem: "FEA simulation outputs are dense and difficult for non-specialist stakeholders to interpret or act on.",
+        solution: "Converted ANSYS stress and deformation results into interactive Power BI dashboards with annotated contour maps and summary metrics.",
+        impact: "Improved communication between engineers and decision-makers, shortening review cycles.",
+        images: ["indx/e.png", "indx/f.png"]
+      },
+      /* ---- ADD MORE PROJECTS BELOW THIS LINE ----
+      {
+        title: "Your Project Title",
+        tags: "Tool1 · Tool2 · Tool3",
+        problem: "Describe the problem or challenge.",
+        solution: "Describe what you did to solve it.",
+        impact: "Describe the result or outcome.",
+        images: ["indx/g.png", "indx/h.png"]
+      },
+      ---- COPY THE BLOCK ABOVE FOR EACH NEW PROJECT ---- */
+    ];
+  </script>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+    <img id="lightbox-img" src="" alt="Enlarged project image" />
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()">Close ✕</button>
+      <div class="modal-images" id="modal-images"></div>
+      <div class="modal-content">
+        <div class="modal-num" id="modal-num"></div>
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-body">
+          <div>
+            <div class="modal-section-label">Problem</div>
+            <div class="modal-text" id="modal-problem"></div>
+            <div class="modal-section-label">Solution</div>
+            <div class="modal-text" id="modal-solution"></div>
+          </div>
+          <div>
+            <div class="modal-section-label">Impact</div>
+            <div class="modal-impact" id="modal-impact"></div>
+            <div class="modal-section-label">Tools</div>
+            <div class="modal-tools" id="modal-tools"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Md. Yasin Arafat</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#downloads">Portfolio & CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-body fade-in">
+        <div class="hero-label">Naval Architect · FEM & Stability Expert</div>
+        <h1 class="hero-title">Ship Design and Advanced Engineering</h1>
+      </div>
+      <div class="hero-bottom">
+        <p class="hero-desc">
+          I transform structural engineering data into clear, actionable insights — helping teams understand fatigue behavior, stress distribution, and system performance.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Hire Me</a>
+          <a href="#projects" class="btn-ghost">View Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Projects</h2>
+        <span class="section-index" id="project-count"></span>
+      </div>
+      <div class="project-grid fade-in" id="project-grid"></div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="capabilities-section" id="capabilities">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Capabilities</h2>
+        <span class="section-index">003 Domains</span>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-item fade-in">
+          <div class="cap-num">01</div>
+          <div class="cap-title">Engineering Analysis</div>
+          <p class="cap-body">FEM, Structural Analysis, Fatigue and Buckling evaluation across marine and offshore structures.</p>
+        </div>
+        <div class="cap-item fade-in">
+          <div class="cap-num">02</div>
+          <div class="cap-title">Data and Visualization</div>
+          <p class="cap-body">Python, Pandas, Power BI, and data modeling to surface patterns from complex simulation outputs.</p>
+        </div>
+        <div class="cap-item fade-in">
+          <div class="cap-num">03</div>
+          <div class="cap-title">Tools and Software</div>
+          <p class="cap-body">ANSYS, Rhino, and Excel for end-to-end simulation, modeling, and reporting workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section class="downloads-section" id="downloads">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Portfolio & CV</h2>
+        <span class="section-index">002 Documents</span>
+      </div>
+      <div class="downloads-grid fade-in">
+        <div class="download-card">
+          <div class="download-info">
+            <div class="download-type">Curriculum Vitae</div>
+            <div class="download-name">Resume / CV</div>
+            <div class="download-filename">md_yasin_arafata_cv.pdf</div>
+          </div>
+          <a href="md_yasin_arafata_cv.pdf" download class="btn-download">Download CV</a>
+        </div>
+        <div class="download-card">
+          <div class="download-info">
+            <div class="download-type">Work Samples</div>
+            <div class="download-name">Project Portfolio</div>
+            <div class="download-filename">md_yasin_arafata_portfolio.pdf</div>
+          </div>
+          <a href="md_yasin_arafata_portfolio.pdf" download class="btn-download">Download Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Get in Touch</h2>
+        <span class="section-index">Let's Work Together</span>
+      </div>
+      <div class="contact-grid fade-in">
+        <div class="contact-left">
+          <h2 class="cta-big">Open to Work<br>Worldwide</h2>
+          <p class="cta-body">Available for freelance projects, consulting, and full-time roles in naval architecture, structural analysis, and engineering data visualization.</p>
+          <a href="mailto:md.yasin.arafat@gmail.com" class="btn-primary">Send an Email</a>
+        </div>
+        <div class="contact-right">
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-label">Email</div>
+              <a href="mailto:md.yasin.arafat@gmail.com" class="contact-value">md.yasin.arafat@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Phone</div>
+              <a href="tel:+8801700000000" class="contact-value">+880 1700 000 000</a>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">LinkedIn</div>
+              <a href="https://linkedin.com/in/md-yasin-arafat" target="_blank" class="contact-value">linkedin.com/in/md-yasin-arafat</a>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Location</div>
+              <span class="contact-value">Dhaka, Bangladesh</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Availability</div>
+              <span class="contact-value">Open to opportunities — remote or on-site</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="container">
+    <footer>
+      <span class="footer-text">© 2025 Md. Yasin Arafat </span>
+      <span class="footer-text">Naval Architect · Dhaka, BD</span>
+    </footer>
+  </div>
+
+  <script>
+    // Build project grid
+    const grid = document.getElementById('project-grid');
+    const countEl = document.getElementById('project-count');
+    countEl.textContent = String(PROJECTS.length).padStart(3, '0') + ' Projects';
+
+    PROJECTS.forEach((p, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      const thumb = p.images && p.images.length > 0
+        ? `<img class="card-thumb" src="${p.images[0]}" alt="${p.title}" loading="lazy" />`
+        : `<div class="card-thumb-placeholder"><span>No image</span></div>`;
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        ${thumb}
+        <div class="card-body">
+          <div class="card-num">${num}</div>
+          <div class="card-title">${p.title}</div>
+          <div class="card-tags">${p.tags}</div>
+        </div>
+        <div class="card-arrow">↗</div>
+      `;
+      card.addEventListener('click', () => openModal(i));
+      grid.appendChild(card);
+    });
+
+    // Modal
+    function openModal(index) {
+      const p = PROJECTS[index];
+      const num = String(index + 1).padStart(2, '0');
+      document.getElementById('modal-num').textContent = 'Project ' + num;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-problem').textContent = p.problem;
+      document.getElementById('modal-solution').textContent = p.solution;
+      document.getElementById('modal-impact').textContent = p.impact;
+      document.getElementById('modal-tools').textContent = p.tags;
+      const imgContainer = document.getElementById('modal-images');
+      imgContainer.innerHTML = '';
+      if (p.images && p.images.length > 0) {
+        imgContainer.style.display = 'grid';
+        imgContainer.className = 'modal-images' + (p.images.length === 1 ? ' single-image' : '');
+        p.images.forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = p.title;
+          img.onclick = () => openLightbox(src);
+          imgContainer.appendChild(img);
+        });
+      } else {
+        imgContainer.style.display = 'none';
+      }
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('modal').scrollTop = 0;
+    }
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox-img').src = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeLightbox(); closeModal(); }
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
